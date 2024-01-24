@@ -5,8 +5,20 @@
     <h1 class="text-2xl">Todo App</h1>
     <app-create-todo (createTodo)="createTodo($event)"></app-create-todo>
 
-    <div *ngFor="let todo of todoList; let i = index;">
-      <app-todo-item (deleteTaskBtn)="deleteTask($event)" (completeActionBtn)="completeTask($event)" [todo]="todo" [index]="i"></app-todo-item>
+    <div *ngIf="todoList.length > 0; else noData" class="flex flex-col gap-y-4">
+      <app-todo-item
+        *ngFor="let todo of todoList; let i = index"
+        (deleteTaskBtn)="deleteTask($event)"
+        (completeActionBtn)="completeTask($event)"
+        [todo]="todo"
+        [index]="i"
+      ></app-todo-item>
     </div>
+    <ng-template #noData>
+      <div class="flex justify-center gap-x-2">
+        <img class="w-5" src="assets/rubber-duck.png" />
+        <p>No task to do!</p>
+      </div>
+    </ng-template>
   </div>
 </div>
