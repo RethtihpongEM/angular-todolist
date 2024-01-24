@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/ts/interfaces/todo.interfaces';
 
 @Component({
@@ -6,12 +6,19 @@ import { Todo } from 'src/app/ts/interfaces/todo.interfaces';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent implements OnInit{
+export class TodoItemComponent  {
   @Input({required:true}) todo?: Todo;
   @Input({required:true}) index?: number
 
-  ngOnInit(): void {
-    console.log(this.todo,this.index)
+  @Output() completeActionBtn = new EventEmitter<number>();
+  @Output() deleteTaskBtn = new EventEmitter<number>();
+
+  completeTask():void {
+    this.completeActionBtn.emit(this.index)
+  }
+
+  deleleTask():void {
+    this.deleteTaskBtn.emit(this.index)
   }
 
 }

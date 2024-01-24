@@ -6,7 +6,7 @@
     <app-create-todo (createTodo)="createTodo($event)"></app-create-todo>
 
     <div *ngFor="let todo of todoList; let i = index;">
-      <app-todo-item [todo]="todo" [index]="i"></app-todo-item>
+      <app-todo-item (deleteTaskBtn)="deleteTask($event)" (completeActionBtn)="completeTask($event)" [todo]="todo" [index]="i"></app-todo-item>
     </div>
   </div>
 </div>
