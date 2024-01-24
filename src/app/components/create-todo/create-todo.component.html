@@ -1,0 +1,20 @@
+<div class=" flex flex-col items-start gap-y-2">
+  <div
+  [ngClass]=" {'border-red-500 border shadow-red-500 shadow-md':this.isInvalid}"
+  class="p-2 rounded-lg bg-[#201F1F] items-center shadow-md flex w-full">
+    <input
+      [(ngModel)]="todo"
+      (keydown.enter)="addTodo()"
+      class="p-2 w-full focus:outline-0 bg-inherit"
+      placeholder="e.g. Do Homework"
+    />
+    <button
+      (click)="addTodo()"
+      [disabled]="this.todo === ''"
+      class="bg-[#06d670] font-semibold rounded-lg text-white px-4 py-2 hover:bg-[#06d680] transform active:scale-x-75 transition-transform disabled:bg-slate-500 disabled:transform-none"
+    >
+      Create
+    </button>
+  </div>
+  <span class="px-2 text-red-600" *ngIf="this.isInvalid">{{this.errMsg}}</span>
+</div>

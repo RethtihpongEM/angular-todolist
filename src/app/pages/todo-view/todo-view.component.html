@@ -1,0 +1,12 @@
+<div class="justify-center align-middle flex w-full">
+  <div
+    class="mt-[100px] flex flex-col min-w-[500px] text-center gap-y-[25px] mb-[50px]"
+  >
+    <h1 class="text-2xl">Todo App</h1>
+    <app-create-todo (createTodo)="createTodo($event)"></app-create-todo>
+
+    <div *ngFor="let todo of todoList; let i = index;">
+      <app-todo-item [todo]="todo" [index]="i"></app-todo-item>
+    </div>
+  </div>
+</div>
